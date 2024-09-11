@@ -22,6 +22,6 @@ The digital age has made it easier than ever for misinformation, untruths, and f
 
 [solution](https://claude.ai/chat/de9031a6-47fc-45ee-b1bb-d9a5c715b2bc)
 
-### Project Submission
+## Project Submission
 
 [guide](https://guide.devfolio.co/hackers/participate/project-submission)
