@@ -1,27 +1,36 @@
-# Gen AI exchange hackathon by Google - [site](https://devfolio.co/google-genaiexchange)
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Problem 2
+## Getting Started
 
-Develop a GenAI-powered platform that revolutionizes credit access for underserved micro, small, and medium enterprises (MSMEs)
+First, run the development server:
 
-[solution](https://claude.ai/chat/404d2320-3e4f-429b-a9f7-a1e9b57344ea)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## Problem 4
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-ConsumeWise is an AI-enabled smart label reader that helps consumers understand the health impact of packaged food products and nudges them to make better choices.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Problem 5
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-Develop a Gen AI powered tool to make a teaching assistant to teach a student using the Socratic teaching method.
+## Learn More
 
-[solution](https://claude.ai/chat/58abb8b8-87e4-47e8-aceb-0011546301d5)
+To learn more about Next.js, take a look at the following resources:
 
-## Problem 13
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-The digital age has made it easier than ever for misinformation, untruths, and fake news to spread rapidly, especially through video content. For all publishers, including social media platforms, this poses a significant challenge to maintain trust and credibility. Develop a solution that enhances the trustworthiness of video content.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-[solution](https://claude.ai/chat/de9031a6-47fc-45ee-b1bb-d9a5c715b2bc)
+## Deploy on Vercel
 
-## Project Submission
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-[guide](https://guide.devfolio.co/hackers/participate/project-submission)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
