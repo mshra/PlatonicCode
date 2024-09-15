@@ -41,7 +41,7 @@ const Profile = () => {
 
   return (
     <div className="flex gap-8 items-center font-serif">
-      {!session?.user && <Login />}
+      <Login />
     </div>
   );
 };
