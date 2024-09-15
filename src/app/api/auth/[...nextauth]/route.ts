@@ -21,9 +21,9 @@ const handler = NextAuth({
       // handle user in database
       return true;
     },
-    // async redirect({ url, baseUrl }) {
-    //   return "/";
-    // },
+    async redirect() {
+      return "/";
+    },
   },
 
   pages: {
