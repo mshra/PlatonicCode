@@ -1,30 +1,33 @@
-"use client"
+"use client";
 
-
-import { useState } from 'react'
-import { signIn } from 'next-auth/react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { FcGoogle } from 'react-icons/fc'
-import Link from 'next/link'
-import { redirect } from 'next/dist/server/api-utils'
-import { useRouter } from 'next/navigation'
-
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { FcGoogle } from "react-icons/fc";
+import Link from "next/link";
+// import { redirect } from "next/dist/server/api-utils";
+// import { useRouter } from "next/navigation";
 
 export default function SignIn() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState(''); 
-  const router = useRouter(); 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const router = useRouter();
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    console.log('Attempting to sign in with:', email, password)
-  }
+    e.preventDefault();
 
-
+    console.log("Attempting to sign in with:", email, password);
+  };
 
   return (
     <div className="font-serif flex items-center justify-center min-h-screen bg-gray-100">
@@ -32,19 +35,21 @@ export default function SignIn() {
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
             Sign in
-            </CardTitle>
+          </CardTitle>
           <CardDescription className="text-center">
             Choose your preferred sign in method
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
-          <Button 
-            variant="outline" 
-            onClick={()=>{signIn("google")}}
+          <Button
+            variant="outline"
+            onClick={() => {
+              signIn("google");
+            }}
             className="w-full gap-2"
           >
-           <FcGoogle size={18}/>
-           Sign In with Google
+            <FcGoogle size={18} />
+            Sign In with Google
           </Button>
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
@@ -73,7 +78,7 @@ export default function SignIn() {
               <Input
                 id="password"
                 type="password"
-                placeholder=''
+                placeholder=""
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -86,7 +91,7 @@ export default function SignIn() {
         </CardContent>
         <CardFooter>
           <p className="text-center text-sm text-gray-600 mt-2">
-            Don&apos;t have an account?{' '}
+            Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-blue-600 hover:underline">
               Sign up
             </Link>
@@ -94,5 +99,5 @@ export default function SignIn() {
         </CardFooter>
       </Card>
     </div>
-  )
+  );
 }
