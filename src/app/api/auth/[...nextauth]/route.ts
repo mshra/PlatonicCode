@@ -13,7 +13,7 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async signIn({ account, profile }) {
+    async signIn({ profile }) {
       if (!profile?.email) {
         throw new Error("No profile");
       }
@@ -21,9 +21,9 @@ const handler = NextAuth({
       // handle user in database
       return true;
     },
-    async redirect({ url, baseUrl }) {
-      return "/";
-    },
+    // async redirect({ url, baseUrl }) {
+    //   return "/";
+    // },
   },
 
   pages: {
