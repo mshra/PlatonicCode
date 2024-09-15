@@ -8,3 +8,4 @@ Develop a GenAI-powered platform that revolutionizes credit access for underserv
 
 - [ ] Setting up authentication
 - [ ] Storing information in database
+
