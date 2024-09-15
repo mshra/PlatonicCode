@@ -7,3 +7,9 @@ Develop a GenAI-powered platform that revolutionizes credit access for underserv
 ## TODO
 
 - [ ] Task 1
+
+## Risk assessment
+
+- **cash flow statement**:
+- balance sheet: financial positional statement of a company at the end of the financial year(F.Y.)
+- statement of profit and loss:
