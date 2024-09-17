@@ -14,6 +14,7 @@ const config: Config = {
         bellefair: ["var(--font-bellefair)"],
       },
       colors: {
+        grey: "#999999",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
