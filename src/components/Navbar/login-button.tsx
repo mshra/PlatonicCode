@@ -1,16 +1,37 @@
-import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { LogIn } from "lucide-react";
 import { signIn } from "next-auth/react";
+import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
   return (
-    <>
-      <div className="flex gap-8 items-center font-serif">
-        <Button className="w-full sm:w-auto" onClick={() => signIn()}>
-          <LogIn className="mr-2 h-4 w-4" />
-          Sign In
-        </Button>
-      </div>
-    </>
+    <AlertDialog>
+      <AlertDialogTrigger className="bg-white rounded-md text-black py-1 px-2 flex justify-center items-center">
+        <LogIn className="mr-2 h-4 w-4" />
+        Sign In
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle className="flex items-center justify-center gap-2">
+            Sign In with
+            <FcGoogle size={18} />
+          </AlertDialogTitle>
+          <AlertDialogDescription></AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogAction onClick={() => signIn("google")}>
+          Continue
+        </AlertDialogAction>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }

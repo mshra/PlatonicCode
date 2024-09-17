@@ -1,3 +1,4 @@
+import { getUserById } from "@/db/queries/select";
 import NextAuth from "next-auth";
 
 import GoogleProvider from "next-auth/providers/google";
@@ -14,9 +15,9 @@ const handler = NextAuth({
   ],
   callbacks: {
     async signIn({ profile }) {
-      if (!profile?.email) {
-        throw new Error("No profile");
-      }
+      // if (!profile?.email) {
+      //   throw new Error("No profile");
+      // }
 
       // handle user in database
       return true;

@@ -15,13 +15,10 @@ import {
 } from "@/components/ui/card";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
-// import { redirect } from "next/dist/server/api-utils";
-// import { useRouter } from "next/navigation";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const router = useRouter();
 
   const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
