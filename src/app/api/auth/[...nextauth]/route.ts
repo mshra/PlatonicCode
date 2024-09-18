@@ -1,12 +1,9 @@
-import { getUserById } from "@/db/queries/select";
+import { createUser } from "@/db/queries/insert";
+import { getUserByEmail } from "@/db/queries/select";
 import NextAuth from "next-auth";
-
 import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
-  session: {
-    strategy: "jwt",
-  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -14,22 +11,29 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async signIn({ profile }) {
-      // if (!profile?.email) {
-      //   throw new Error("No profile");
-      // }
+    async signIn({ account, profile }) {
+      try {
+        if (account?.provider === "google") {
+          const user = await getUserByEmail(profile?.email as string);
 
-      // handle user in database
-      return true;
+          if (user.length === 0) {
+            await createUser({
+              name: profile?.name as string,
+              email: profile?.email as string,
+            });
+          }
+        }
+        return true;
+      } catch (error) {
+        console.error("Error creating user:", error);
+        return false;
+      }
     },
     async redirect() {
       return "/";
     },
   },
   secret: process.env.NEXT_AUTH_SECRET,
-  pages: {
-    signIn: "/signin",
-  },
 });
 
 export { handler as GET, handler as POST };
