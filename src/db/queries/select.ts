@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { db } from "@/db/db";
-import { usersTable, SelectUser } from "@/db/schema/schema";
+import { usersTable, SelectUser } from "../schema";
 
 export async function getUserByEmail(email: SelectUser["email"]): Promise<
   Array<{
