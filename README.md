@@ -6,6 +6,5 @@ Develop a GenAI-powered platform that revolutionizes credit access for underserv
 
 ## TODO
 
-- [ ] Setting up authentication
-- [ ] Storing information in database
-
+- [x] Setting up authentication
+- [x] Storing information in database
