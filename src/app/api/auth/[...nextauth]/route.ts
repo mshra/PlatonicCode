@@ -29,9 +29,6 @@ const handler = NextAuth({
         return false;
       }
     },
-    async redirect() {
-      return "/";
-    },
   },
   secret: process.env.NEXT_AUTH_SECRET,
 });

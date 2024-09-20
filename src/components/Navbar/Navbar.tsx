@@ -17,13 +17,11 @@ const Profile = () => {
   const { data: session } = useSession();
 
   if (session) {
-    const profilePicture = session.user?.image as string;
-
     return (
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Avatar>
-            <AvatarImage src={profilePicture} />
+            <AvatarImage src={session.user?.image as string} />
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent>

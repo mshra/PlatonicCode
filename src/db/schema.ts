@@ -4,6 +4,7 @@ export const usersTable = pgTable("users", {
   id: serial("id").unique().primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
+  profilePicture: text("profile-picture"),
 });
 
 export type InsertUser = typeof usersTable.$inferInsert;

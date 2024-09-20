@@ -1,5 +1,5 @@
 {
-  "id": "c4361d23-7361-4eb2-a249-39bbe4c001ca",
+  "id": "0b3653a6-47e7-4dc5-b2dd-5a50cfd0e4b8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -25,6 +25,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "profile-picture": {
+          "name": "profile-picture",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
