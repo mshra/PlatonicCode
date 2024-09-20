@@ -1,3 +1,5 @@
+"use client"
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,12 +12,17 @@ import {
   import { LogOut } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import Login from "./login-button";
+import { useRouter } from "next/navigation";
+
+
 
 export const Profile = () => {
     const { data: session } = useSession();
-  
+    const router = useRouter();
+
     if (session) {
       const profilePicture = session.user?.image as string;
+      
   
       return (
         <DropdownMenu>
@@ -27,7 +34,7 @@ export const Profile = () => {
           <DropdownMenuContent>
             <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem onClick={()=>{router.push(`${session.user?.email}`)}}>Profile</DropdownMenuItem>
             <DropdownMenuItem onClick={() => signOut()}>
               <LogOut className="mr-2 h-4 w-4" />
               Sign Out
