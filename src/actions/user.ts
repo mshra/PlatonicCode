@@ -11,4 +11,5 @@ type UserParam = {
 
 export async function getUserProfilePicture(param: UserParam) {
   const user = await getUserByEmail(param.email);
+  return user;
 }
