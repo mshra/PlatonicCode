@@ -2,11 +2,8 @@ import { createUser } from "@/db/queries/insert";
 import { getUserByEmail } from "@/db/queries/select";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { db } from "@/db/db";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
 
 const handler = NextAuth({
-  adapter: DrizzleAdapter(db),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
