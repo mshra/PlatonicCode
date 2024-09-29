@@ -11,8 +11,6 @@ import Chat from "@/components/Chat";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { runThisCode } from "@/actions/judge";
-// import * as monaco from "monaco-editor/esm/vs/editor/editor.api";
-// type Monaco = typeof monaco;
 
 export default function ProblemEditor() {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);

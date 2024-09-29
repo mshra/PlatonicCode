@@ -32,12 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="">
-        <Providers>
-        
-        <Navbar />
-      
-        {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
