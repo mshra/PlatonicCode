@@ -34,12 +34,12 @@ export default function Home() {
             <TypingAnimation
               duration={100}
               text="Empowering students to learn and think using AI"
-              className="bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 mt-2"
+              className="text-3xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 mt-2"
             />
           </BlurFade>
           <BlurFade>
             <div className="flex justify-center items-center">
-              <ShimmerButton className="flex justify-center items-center">
+              <ShimmerButton className="mt-4 flex justify-center items-center">
                 <span className="flex gap-1 justify-center items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                   Get Started <ChevronRight size={20} />
                 </span>
