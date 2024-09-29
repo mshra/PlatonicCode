@@ -27,7 +27,9 @@ const Profile = () => {
         <DropdownMenuContent>
           <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href={"/user/username"}>Profile</Link>
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={() => signOut()}>
             <LogOut className="mr-2 h-4 w-4" />
             Sign Out
@@ -46,9 +48,12 @@ const Profile = () => {
 
 export default function Navbar() {
   return (
-    <header className="w-full flex justify-around border-b rounded-full p-4">
+    <header
+      className="w-full flex justify-around border-b rounded-full p-4"
+      id="Navbar"
+    >
       <Link href="/" className="font-cardo text-4xl">
-        FinanceGuru
+        PlatonicCode
       </Link>
       <Profile />
     </header>

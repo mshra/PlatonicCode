@@ -20,7 +20,7 @@ const bellefair = Bellefair({
 });
 
 export const metadata: Metadata = {
-  title: "FinanceGuru",
+  title: "PlatonicCode",
 };
 
 export default function RootLayout({
