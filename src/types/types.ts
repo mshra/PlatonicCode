@@ -15,6 +15,6 @@ export interface JudgeResponse {
 
 export type Topic = {
   id: number;
-  title: string;
+  name: string;
   description: string | null;
 };
