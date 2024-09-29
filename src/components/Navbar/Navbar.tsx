@@ -3,6 +3,7 @@ import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import Login from "./login-button";
 import { LogOut } from "lucide-react";
+import { motion } from "framer-motion";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -48,14 +49,20 @@ const Profile = () => {
 
 export default function Navbar() {
   return (
-    <header
-      className="w-full flex justify-around border-b rounded-full p-4"
-      id="Navbar"
+    <motion.div
+       
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
     >
-      <Link href="/" className="font-cardo text-4xl">
-        PlatonicCode
-      </Link>
-      <Profile />
-    </header>
+      <header className="flex justify-between items-center w-full border-b px-10 py-4">
+
+        <Link href="/" className="font-cardo text-2xl">
+          PlatonicCode
+        </Link>
+        
+
+        <Profile />
+      </header>
+    </motion.div>
   );
 }

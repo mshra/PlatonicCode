@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Providers from "@/providers";
 import { Cardo, Bellefair } from "next/font/google";
+import Navbar from "@/components/Navbar/Navbar";
 
 const cardo = Cardo({
   subsets: ["latin"],
@@ -30,8 +31,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${cardo.className} ${bellefair.className} antialiased`}>
-        <Providers>{children}</Providers>
+      <body className="">
+        <Providers>
+        
+        <Navbar />
+      
+        {children}
+        </Providers>
       </body>
     </html>
   );
