@@ -1,5 +1,7 @@
 "use server";
 import { db } from "@/db/db";
+import { topicsTable } from "@/db/schema";
+import { Topic } from "@/types/types";
 import { eq } from "drizzle-orm";
 import { SelectUser, usersTable } from "../schema";
 
@@ -12,4 +14,8 @@ export async function getUserByEmail(email: SelectUser["email"]): Promise<
   }>
 > {
   return db.select().from(usersTable).where(eq(usersTable.email, email));
+}
+
+export async function getTopicsList(): Promise<Topic[]> {
+  return db.select().from(topicsTable) as unknown as Promise<Topic[]>;
 }
