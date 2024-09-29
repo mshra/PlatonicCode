@@ -12,7 +12,11 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { runThisCode } from "@/actions/judge";
 
-export default function ProblemEditor() {
+export default function ProblemEditor({
+  params,
+}: {
+  params: { title: string };
+}) {
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
   function handleEditorMount(editor: editor.IStandaloneCodeEditor) {
