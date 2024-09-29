@@ -20,7 +20,7 @@ export default function Home() {
   }
 
   return (
-    <div className="h-screen overflow-y-hidden">
+    <div className="h-screen">
       <Navbar />
       <div className="flex justify-center items-center h-screen border-none ">
       <div className="relative flex h-screen w-full items-center justify-center overflow-hidden rounded-lg  bg-background p-20 md:shadow-xl">
