@@ -21,8 +21,6 @@ const handler = NextAuth({
               name: profile?.name as string,
               email: profile?.email as string,
             });
-
-            return "/create-profile";
           }
         }
         return true;
