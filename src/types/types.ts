@@ -12,3 +12,9 @@ export interface JudgeResponse {
   message: any;
   status: { id: number; description: string };
 }
+
+export type Topic = {
+  id: number;
+  title: string;
+  description: string | null;
+};

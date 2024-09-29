@@ -8,5 +8,14 @@ export const usersTable = pgTable("users", {
   profilePicture: text("profile-picture"),
 });
 
+export const topicsTable = pgTable("topics", {
+  id: serial("id").unique().primaryKey(),
+  name: text("topic-name").notNull(),
+  description: text("description").default(""),
+});
+
 export type InsertUser = typeof usersTable.$inferInsert;
 export type SelectUser = typeof usersTable.$inferSelect;
+
+export type InsertTopics = typeof topicsTable.$inferInsert;
+export type SelectTopics = typeof topicsTable.$inferSelect;
