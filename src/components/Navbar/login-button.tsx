@@ -27,10 +27,10 @@ export default function Login() {
           </AlertDialogTitle>
           <AlertDialogDescription></AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogAction onClick={() => signIn("google")}>
+        <AlertDialogAction className="mx-16 flex items-center justify-center" onClick={() => signIn("google")}>
           Continue
         </AlertDialogAction>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogCancel className="mx-16 flex items-center justify-center">Cancel</AlertDialogCancel>
       </AlertDialogContent>
     </AlertDialog>
   );
