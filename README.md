@@ -6,7 +6,7 @@ Develop a Gen AI powered tool to make a teaching assistant to teach a student us
 
 ## TODO
 
-- [ ] Landing Page
+- [x] Landing Page
 - [x] Setting up authentication
 - [x] Storing information in database
 - [x] Editor integrated
