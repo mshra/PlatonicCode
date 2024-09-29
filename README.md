@@ -10,4 +10,5 @@ Develop a Gen AI powered tool to make a teaching assistant to teach a student us
 - [x] Setting up authentication
 - [x] Storing information in database
 - [x] Editor integrated
-- [ ] Set up a problem(on /problems) - start with Binary Search or Algorithms of sorting
+- [x] Added dynamic routing with problems.
+- [ ] Design conversation for proper learning.
