@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="">
+      <body className="overflow-x-hidden">
         <Providers>
         
         <Navbar />
