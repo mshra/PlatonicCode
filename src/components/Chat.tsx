@@ -3,20 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send } from "lucide-react";
-
-interface Message {
-  id: number;
-  text: string;
-  sender: "user" | "bot";
-}
+import { Message } from "@/types/types";
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Hello! How can I help you today?", sender: "bot" },
+    {
+      id: 1,
+      text: "Ask me about binary search.",
+      sender: "bot",
+    },
   ]);
   const [inputValue, setInputValue] = useState("");
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputValue.trim() !== "") {
       const newMessage: Message = {
         id: messages.length + 1,
@@ -45,7 +44,7 @@ export default function Chat() {
           <div
             key={message.id}
             className={`mb-4 ${
-              message.sender === "user" ? "text-right" : "text-left"
+              message.sender === "user" ? "text-right ml-72" : "text-left mr-72"
             }`}
           >
             <div
