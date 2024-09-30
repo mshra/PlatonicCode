@@ -21,6 +21,7 @@ const handler = NextAuth({
               name: profile?.name as string,
               email: profile?.email as string,
             });
+            return "/details";
           }
         }
         return true;

@@ -19,7 +19,6 @@ export default function TopicsList() {
     }
     fetchTopicsList();
   }, []);
-  console.log(topics);
 
   return (
     <div className="container mx-auto py-8 px-4 max-w-2xl">
