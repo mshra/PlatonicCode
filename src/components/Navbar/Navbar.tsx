@@ -50,20 +50,20 @@ const Profile = () => {
 export default function Navbar() {
   return (
     <motion.div
-       
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
     >
       <header className="flex justify-between items-center w-full border-b px-10 py-3">
-
-        <Link href="/" className="font-cardo text-2xl hover:scale-110  transition-all ease-out">
+        <Link
+          href="/"
+          className="font-cardo text-2xl hover:scale-110  transition-all ease-out"
+        >
           PlatonicCode
         </Link>
-        
+
         <div className="hover:scale-105 transition-all ease-out">
-        <Profile />
+          <Profile />
         </div>
-        
       </header>
     </motion.div>
   );
