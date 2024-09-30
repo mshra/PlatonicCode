@@ -53,5 +53,5 @@ export async function runThisCode(code: string) {
       clearInterval(intervalId);
       return JSON.stringify(response);
     }
-  }, 1000);
+  }, 100);
 }

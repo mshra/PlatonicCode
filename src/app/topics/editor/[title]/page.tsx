@@ -32,7 +32,7 @@ export default function ProblemEditor({
   return (
     <div className="grid grid-rows-[auto_1fr] h-full text-xl">
       <div className="mb-2">
-        <Navbar/>
+        <Navbar />
       </div>
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={50}>
