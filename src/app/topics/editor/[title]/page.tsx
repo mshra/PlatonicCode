@@ -11,6 +11,8 @@ import Chat from "@/components/Chat";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { runThisCode } from "@/actions/judge";
+import TestCases from "@/components/test-cases";
+import { Play } from "lucide-react";
 
 export default function ProblemEditor({
   params,
@@ -53,9 +55,14 @@ export default function ProblemEditor({
             </ResizablePanel>
             <ResizableHandle />
             <ResizablePanel defaultSize={30}>
-              <div className="flex h-full items-center justify-center p-6">
-                <span className="font-semibold">Test Cases</span>
-                <Button onClick={handleClick}>Click</Button>
+              <div className="h-full  p-6">
+              <Button className="flex justify-center items-center gap-1 hover:scale-110" onClick={handleClick}>
+                Run <Play size={15}/>
+              </Button>
+                <div>
+                  <TestCases testcases={testcases}/>
+                </div>
+                
               </div>
             </ResizablePanel>
           </ResizablePanelGroup>
@@ -64,3 +71,21 @@ export default function ProblemEditor({
     </div>
   );
 }
+
+
+
+
+export const testcases = [
+  {
+    input:`[1,2,4,5]`
+  }, 
+  {
+    input:`[1,2]`
+  }, 
+  {
+    input:`[1,2,4,]`
+  }, 
+  {
+    input:`[1]`
+  }
+]
