@@ -47,7 +47,7 @@ export default function ProblemEditor({
               <div className="flex h-full items-center justify-center p-2">
                 <Editor
                   theme="vs-dark"
-                  defaultLanguage="python"
+                  defaultLanguage="cpp"
                   defaultValue="print('hello, world')"
                   onMount={handleEditorMount}
                 />
