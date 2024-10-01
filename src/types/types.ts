@@ -1,5 +1,6 @@
 export declare enum Language {
   Python = 71,
+  Cpp = 76
 }
 
 export declare interface JudgeResponse {

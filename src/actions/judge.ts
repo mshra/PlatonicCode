@@ -1,6 +1,7 @@
 "use server";
 
 import { JudgeResponse, Language } from "@/types/types";
+import { stdin } from "process";
 
 const JUDGE_API_KEY = process.env.NEXT_JUDGE_API_KEY!;
 const baseURL = process.env.NEXT_BASE_URL!;
@@ -16,8 +17,9 @@ async function createSubmission(code: string): Promise<string> {
         Authorization: `Bearer ${JUDGE_API_KEY}`,
       },
       body: JSON.stringify({
-        language_id: Language.Python,
+        language_id: Language.Cpp,
         source_code: code,
+        stdin:`2\n20 13`
       }),
     });
     const data: { token: string } = await response.json();
