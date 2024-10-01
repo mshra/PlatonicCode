@@ -1,8 +1,7 @@
 "use client";
 import { runThisCode } from "@/actions/judge";
 import Chat from "@/components/Chat";
-import { EditorMenubar } from "@/components/Editor-Menubar";
-import Navbar from "@/components/Navbar/Navbar";
+import { EditorMenubar } from "@/components/EditorMenubar";
 import TestCase from "@/components/TestCase";
 import {
   ResizableHandle,
