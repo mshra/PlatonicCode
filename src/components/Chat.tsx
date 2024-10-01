@@ -32,14 +32,6 @@ export default function Chat() {
         sender: "bot",
       };
       setMessages((prevMessages) => [...prevMessages, botResponse]);
-      // Simulate bot response
-      // setTimeout(() => {
-      //   const botResponse: Message = {
-      //     id: messages.length + 2,
-      //     text: "Thank you for your message. I'm a demo bot, so I can't provide a real response.",
-      //     sender: "bot",
-      //   };
-      // }, 1000);
     }
   };
 
