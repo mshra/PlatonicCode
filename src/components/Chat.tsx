@@ -3,20 +3,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send } from "lucide-react";
-
-interface Message {
-  id: number;
-  text: string;
-  sender: "user" | "bot";
-}
+import { Message } from "@/types/types";
+import { sendMessage } from "@/actions/gemini";
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Hello! How can I help you today?", sender: "bot" },
+    {
+      id: 1,
+      text: "Ask me about binary search.",
+      sender: "bot",
+    },
   ]);
   const [inputValue, setInputValue] = useState("");
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (inputValue.trim() !== "") {
       const newMessage: Message = {
         id: messages.length + 1,
@@ -26,15 +26,20 @@ export default function Chat() {
       setMessages([...messages, newMessage]);
       setInputValue("");
 
+      const botResponse: Message = {
+        id: messages.length + 2,
+        text: await sendMessage(newMessage),
+        sender: "bot",
+      };
+      setMessages((prevMessages) => [...prevMessages, botResponse]);
       // Simulate bot response
-      setTimeout(() => {
-        const botResponse: Message = {
-          id: messages.length + 2,
-          text: "Thank you for your message. I'm a demo bot, so I can't provide a real response.",
-          sender: "bot",
-        };
-        setMessages((prevMessages) => [...prevMessages, botResponse]);
-      }, 1000);
+      // setTimeout(() => {
+      //   const botResponse: Message = {
+      //     id: messages.length + 2,
+      //     text: "Thank you for your message. I'm a demo bot, so I can't provide a real response.",
+      //     sender: "bot",
+      //   };
+      // }, 1000);
     }
   };
 
@@ -45,7 +50,7 @@ export default function Chat() {
           <div
             key={message.id}
             className={`mb-4 ${
-              message.sender === "user" ? "text-right" : "text-left"
+              message.sender === "user" ? "text-right ml-72" : "text-left mr-72"
             }`}
           >
             <div
