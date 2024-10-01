@@ -19,3 +19,5 @@ export async function getUserByEmail(email: SelectUser["email"]): Promise<
 export async function getTopicsList(): Promise<Topic[]> {
   return db.select().from(topicsTable) as unknown as Promise<Topic[]>;
 }
+
+

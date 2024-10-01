@@ -12,6 +12,7 @@ export default function TopicsList() {
     async function fetchTopicsList() {
       try {
         const result = await getTopicsList();
+        result.sort((a, b) => a.id - b.id);
         setTopics(result);
       } catch (err) {
         console.error(err);
