@@ -1,4 +1,5 @@
 "use server";
+
 import { JudgeResponse, Language } from "@/types/types";
 
 const JUDGE_API_KEY = process.env.NEXT_JUDGE_API_KEY!;

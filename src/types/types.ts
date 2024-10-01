@@ -1,8 +1,8 @@
-export enum Language {
+export declare enum Language {
   Python = 71,
 }
 
-export interface JudgeResponse {
+export declare interface JudgeResponse {
   stdout: string;
   time: string;
   memory: number;
@@ -13,14 +13,16 @@ export interface JudgeResponse {
   status: { id: number; description: string };
 }
 
-export type Topic = {
+export declare type Topic = {
   id: number;
   name: string;
   description: string | null;
 };
 
-export interface Message {
+export declare interface Message {
   id: number;
   text: string;
   sender: "user" | "bot";
 }
+
+export {};

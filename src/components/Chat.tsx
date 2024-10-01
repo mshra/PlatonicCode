@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send } from "lucide-react";
 import { Message } from "@/types/types";
+import { sendMessage } from "@/actions/gemini";
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
@@ -25,15 +26,20 @@ export default function Chat() {
       setMessages([...messages, newMessage]);
       setInputValue("");
 
+      const botResponse: Message = {
+        id: messages.length + 2,
+        text: await sendMessage(newMessage),
+        sender: "bot",
+      };
+      setMessages((prevMessages) => [...prevMessages, botResponse]);
       // Simulate bot response
-      setTimeout(() => {
-        const botResponse: Message = {
-          id: messages.length + 2,
-          text: "Thank you for your message. I'm a demo bot, so I can't provide a real response.",
-          sender: "bot",
-        };
-        setMessages((prevMessages) => [...prevMessages, botResponse]);
-      }, 1000);
+      // setTimeout(() => {
+      //   const botResponse: Message = {
+      //     id: messages.length + 2,
+      //     text: "Thank you for your message. I'm a demo bot, so I can't provide a real response.",
+      //     sender: "bot",
+      //   };
+      // }, 1000);
     }
   };
 
