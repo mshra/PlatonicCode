@@ -1,6 +1,6 @@
 export declare enum Language {
   Python = 71,
-  Cpp = 76
+  Cpp = 76,
 }
 
 export declare interface JudgeResponse {
@@ -18,6 +18,8 @@ export declare type Topic = {
   id: number;
   name: string;
   description: string | null;
+  defaultValue: string;
+  testCases: string; // TODO: change this to suitable jsonb interface
 };
 
 export declare interface Message {
