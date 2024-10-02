@@ -12,10 +12,10 @@ Develop a Gen AI powered tool to make a teaching assistant to teach a student us
 - [x] Editor integrated
 - [x] Added dynamic routing with problems.
 - [x] Design conversation for proper learning.
-- [ ] Use [Skeleton](https://ui.shadcn.com/docs/components/skeleton) for lazy loading and data bein fetched from db.
-- [ ] Figure out coding and getting judgement on testcases.
-- [ ] Use zustand to store state of the editor and run from the editor menubar.
-- [ ] Figure out the conversation and best chat strategy to initiate conversation with a narrowed down topic.
+- [x] Use skeleton for lazy loading and data bein fetched from db.
+- [x] Figure out coding and getting judgement on testcases.
+- [x] Use zustand to store state of the editor and run from the editor menubar.
+- [x] Figure out the conversation and best chat strategy to initiate conversation with a narrowed down topic.
 - [ ] Send diagnosis of code if it fails along with code and test case it failed to the model for inference and suggestions.
 - [ ] Complete other algorithms as well.
 - [ ] Finishing touches and what not.
