@@ -10,7 +10,7 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Ask me about binary search.",
+      text: "Let's learn shall we, get to the coding straight away or ask a question...",
       sender: "bot",
     },
   ]);
@@ -28,18 +28,10 @@ export default function Chat() {
 
       const botResponse: Message = {
         id: messages.length + 2,
-        text: await sendMessage(newMessage),
+        text: await sendMessage(newMessage, "Binary Search"), // TODO: figure out passing topic name as parameter.
         sender: "bot",
       };
       setMessages((prevMessages) => [...prevMessages, botResponse]);
-      // Simulate bot response
-      // setTimeout(() => {
-      //   const botResponse: Message = {
-      //     id: messages.length + 2,
-      //     text: "Thank you for your message. I'm a demo bot, so I can't provide a real response.",
-      //     sender: "bot",
-      //   };
-      // }, 1000);
     }
   };
 

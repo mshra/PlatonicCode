@@ -1,4 +1,4 @@
-import { pgTable, serial, text } from "drizzle-orm/pg-core";
+import { jsonb, pgTable, serial, text } from "drizzle-orm/pg-core";
 
 export const usersTable = pgTable("users", {
   id: serial("id").unique().primaryKey(),
@@ -12,6 +12,8 @@ export const topicsTable = pgTable("topics", {
   id: serial("id").unique().primaryKey(),
   name: text("topic-name").notNull(),
   description: text("description").default(""),
+  defaultValue: text("default_value"),
+  testCases: jsonb("test_cases"),
 });
 
 export type InsertUser = typeof usersTable.$inferInsert;

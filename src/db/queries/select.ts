@@ -20,4 +20,7 @@ export async function getTopicsList(): Promise<Topic[]> {
   return db.select().from(topicsTable) as unknown as Promise<Topic[]>;
 }
 
-
+export async function getTopic(topicName: string): Promise<Topic | undefined> {
+  const topicsList = await getTopicsList();
+  return topicsList.find((topic) => topic.name === topicName);
+}

@@ -1,25 +1,47 @@
 "use client";
-import Navbar from "@/components/Navbar/Navbar";
-import { Editor } from "@monaco-editor/react";
-import { editor } from "monaco-editor";
+import { runThisCode } from "@/actions/judge";
+import Chat from "@/components/Chat";
+import { EditorMenubar } from "@/components/EditorMenubar";
+import TestCases from "@/components/TestCase";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import Chat from "@/components/Chat";
-import { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { runThisCode } from "@/actions/judge";
-import TestCases from "@/components/test-cases";
-import { Play } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getTopic } from "@/db/queries/select";
+import { Editor } from "@monaco-editor/react";
+import { editor } from "monaco-editor";
+import { useEffect, useRef, useState } from "react";
+
+function toTitleCase(str: string) {
+  return str.replace(
+    /\w\S*/g,
+    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase(),
+  );
+}
 
 export default function ProblemEditor({
   params,
 }: {
   params: { title: string };
 }) {
+  // get the topic name as url search params and do some string transformations.
+  const topicName = toTitleCase(params.title.replace("-", " "));
+
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
+  const [defaultValue, setDefaultValue] = useState<string>("");
+
+  useEffect(() => {
+    async function getDefaultValue() {
+      const topic = await getTopic(topicName);
+      if (!topic) {
+        return;
+      }
+      setDefaultValue(topic.defaultValue);
+    }
+    getDefaultValue();
+  }, [topicName]);
 
   function handleEditorMount(editor: editor.IStandaloneCodeEditor) {
     editorRef.current = editor;
@@ -33,8 +55,8 @@ export default function ProblemEditor({
 
   return (
     <div className="grid grid-rows-[auto_1fr] h-full text-xl">
-      <div className="mb-2">
-        <Navbar />
+      <div className="m-2">
+        <EditorMenubar />
       </div>
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={50}>
@@ -43,26 +65,33 @@ export default function ProblemEditor({
         <ResizableHandle />
         <ResizablePanel defaultSize={50}>
           <ResizablePanelGroup direction="vertical">
-            <ResizablePanel defaultSize={70}>
+            <ResizablePanel defaultSize={60}>
               <div className="flex h-full items-center justify-center p-2">
-                <Editor
-                  theme="vs-dark"
-                  defaultLanguage="cpp"
-                  defaultValue="print('hello, world')"
-                  onMount={handleEditorMount}
-                />
+                {defaultValue && (
+                  <Editor
+                    theme="vs-dark"
+                    defaultLanguage="python"
+                    defaultValue={defaultValue}
+                    onMount={handleEditorMount}
+                  />
+                )}
               </div>
             </ResizablePanel>
             <ResizableHandle />
-            <ResizablePanel defaultSize={30}>
-              <div className="h-full  p-6">
-              <Button className="flex justify-center items-center gap-1 hover:scale-110" onClick={handleClick}>
-                Run <Play size={15}/>
-              </Button>
-                <div>
-                  <TestCases testcases={testcases}/>
-                </div>
-                
+            <ResizablePanel defaultSize={40}>
+              <div className="h-full p-4">
+                <Tabs defaultValue="testcase">
+                  <TabsList>
+                    <TabsTrigger value="testcase">Testcase</TabsTrigger>
+                    <TabsTrigger value="result">Result</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="testcase">
+                    <TestCases topicName={topicName} />
+                  </TabsContent>
+                  <TabsContent value="result">
+                    Run the code first you fucking idiot.
+                  </TabsContent>
+                </Tabs>
               </div>
             </ResizablePanel>
           </ResizablePanelGroup>
@@ -71,21 +100,3 @@ export default function ProblemEditor({
     </div>
   );
 }
-
-
-
-
-export const testcases = [
-  {
-    input:`[1,2,4,5]`
-  }, 
-  {
-    input:`[1,2]`
-  }, 
-  {
-    input:`[1,2,4,]`
-  }, 
-  {
-    input:`[1]`
-  }
-]
