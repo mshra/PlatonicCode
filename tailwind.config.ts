@@ -69,7 +69,8 @@ const config: Config = {
   		animation: {
   			'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
   			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
-  			rainbow: 'rainbow var(--speed, 2s) infinite linear'
+  			rainbow: 'rainbow var(--speed, 2s) infinite linear',
+			  spotlight: "spotlight 2s ease .75s 1 forwards",
   		},
   		keyframes: {
   			'shimmer-slide': {

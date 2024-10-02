@@ -1,6 +1,8 @@
 "use client";
 import React, { useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+import { StarsBackground } from "./stars-background";
+import { ShootingStars } from "./shooting-stars";
 
 export const ContainerScroll = ({
   titleComponent,
@@ -63,6 +65,8 @@ export const Header = ({ translate, titleComponent }: any) => {
       className="div max-w-5xl mx-auto text-center"
     >
       {titleComponent}
+      <ShootingStars/>
+      <StarsBackground/>
     </motion.div>
   );
 };
@@ -90,6 +94,8 @@ export const Card = ({
       <div className=" h-full w-full  overflow-hidden rounded-2xl  dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
         {children}
       </div>
+      
+      
     </motion.div>
   );
 };
