@@ -4,18 +4,24 @@ import { getTopicsList } from "@/db/queries/select";
 import { Topic } from "@/types/types";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Skeleton from "./skeleton";
 
 export default function TopicsList() {
   const [topics, setTopics] = useState<Topic[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchTopicsList() {
       try {
+        setLoading(true);
         const result = await getTopicsList();
         result.sort((a, b) => a.id - b.id);
         setTopics(result);
+        
       } catch (err) {
         console.error(err);
+      }finally{
+        setLoading(false);
       }
     }
     fetchTopicsList();
@@ -23,7 +29,10 @@ export default function TopicsList() {
 
   return (
     <div className="container mx-auto py-8 px-4 max-w-2xl">
-      {topics && (
+      {
+        loading && (<Skeleton/>)
+      }
+      {!loading && topics && topics.length > 0 && (
         <div className="space-y-4">
           {topics.map((topic) => (
             <Card key={topic.id}>
