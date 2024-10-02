@@ -1,4 +1,4 @@
-export declare enum Language {
+export enum Language {
   Python = 71,
 }
 

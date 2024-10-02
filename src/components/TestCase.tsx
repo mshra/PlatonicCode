@@ -6,16 +6,18 @@ import { useEffect, useState } from "react";
 
 export default function TestCases({ topicName }: { topicName: string }) {
   const [testCases, setTestCases] = useState<TestCase[] | null>(null);
+
   useEffect(() => {
     async function fetchTopics() {
-      const topic = await getTopic(topicName);
-      if (!topic) {
+      const topicResult = await getTopic(topicName);
+      if (!topicResult) {
         return;
       }
-      setTestCases(topic.testCases);
+      setTestCases(topicResult.testCases);
     }
     fetchTopics();
-  }, [testCases, topicName]);
+    return;
+  }, [topicName]);
 
   return (
     <div className="my-4">
