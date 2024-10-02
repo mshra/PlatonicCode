@@ -10,8 +10,7 @@ import useStoreResult, { ResultType } from "@/stores/result-store";
 
 export function EditorMenubar(props: MenuBarProps) {
   const { testCases } = useTestCaseStore((state) => state);
-  const {result, setResult}= useStoreResult(); 
-
+  const { result, setResult } = useStoreResult();
 
   async function handleClick() {
     const code = props.editorRef.current?.getValue();
@@ -25,11 +24,11 @@ export function EditorMenubar(props: MenuBarProps) {
         stdin,
         expected_output,
       ).then((res) => JSON.parse(res));
-      const outputStatus:ResultType={
-        id:index, 
-        status:output.status.description, 
-      }
-      setResult(outputStatus); 
+      const outputStatus: ResultType = {
+        id: index,
+        status: output.status.description,
+      };
+      setResult(outputStatus);
 
       if (output.stdout === testCase.expectedOutput) {
         testCase.status = "Accepted";
@@ -37,9 +36,6 @@ export function EditorMenubar(props: MenuBarProps) {
         testCase.expectedOutput = output.status.description;
       }
     });
-
-
-    console.log(result); 
   }
 
   return (
