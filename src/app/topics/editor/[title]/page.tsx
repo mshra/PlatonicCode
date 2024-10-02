@@ -1,8 +1,8 @@
 "use client";
-import { runThisCode } from "@/actions/judge";
 import Chat from "@/components/Chat";
 import { EditorMenubar } from "@/components/EditorMenubar";
 import TestCases from "@/components/TestCase";
+import { Button } from "@/components/ui/button";
 import {
   ResizableHandle,
   ResizablePanel,
@@ -19,12 +19,12 @@ export default function ProblemEditor({
 }: {
   params: { title: string };
 }) {
-  // get the topic name as url search params and do some string transformations.
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
   const [defaultValue, setDefaultValue] = useState<string>("");
   const [topicName, setTopicName] = useState<string>("");
 
   useEffect(() => {
+    // get the topic name as url search params and do some string transformations.
     setTopicName(
       params.title
         .replace("-", " ")
@@ -49,14 +49,15 @@ export default function ProblemEditor({
 
   async function handleClick() {
     const code = editorRef.current!.getValue();
-    const output = await runThisCode(code);
-    console.log(output);
+    console.log("run clicked");
+    // const output = await runThisCode(code);
+    // console.log(output);
   }
 
   return (
     <div className="grid grid-rows-[auto_1fr] h-full text-xl">
       <div className="m-2">
-        <EditorMenubar />
+        <EditorMenubar editorRef={editorRef} />
       </div>
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={50}>
@@ -89,7 +90,7 @@ export default function ProblemEditor({
                     <TestCases topicName={topicName} />
                   </TabsContent>
                   <TabsContent value="result">
-                    Run the code first you fucking idiot.
+                    <Button onClick={handleClick}>run</Button>
                   </TabsContent>
                 </Tabs>
               </div>
