@@ -12,13 +12,13 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { Spotlight } from "@/components/ui/spotlight";
 import { StarsBackground } from "@/components/ui/stars-background";
 
-
 import TypingAnimation from "@/components/ui/typing-animation";
 import { cn } from "@/lib/utils";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { ChevronRight } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import SignIn from "./(route)/(auth)/signin/page";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -29,22 +29,19 @@ export default function Home() {
   return (
     <div className="h-screen">
       <Navbar />
-      
 
       <div className="flex justify-center items-center h-screen border-none ">
-
         <div className="relative z-10 flex h-screen w-full items-center justify-center overflow-hidden rounded-lg  bg-background p-20 md:shadow-xl">
           <div className="flex flex-col">
-
             <BlurFade duration={0.5}>
               <p className="z-10 whitespace-pre-wrap text-center text-5xl font-semibold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 mb-2">
-                Unlock the Power of Thought-Driven Learning
+                Level up your undestanding with interactive based learning
               </p>
             </BlurFade>
             <BlurFade duration={0.6}>
               <TypingAnimation
                 duration={100}
-                text="Empowering students to learn and think using AI"
+                text="Empowering learning and thinking for students using AI."
                 className="text-3xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 mt-2"
               />
             </BlurFade>
@@ -59,9 +56,7 @@ export default function Home() {
             </BlurFade>
 
             <ShootingStars />
-          <StarsBackground/>
-          
-           
+            <StarsBackground />
           </div>
 
           {/* <GridPattern
@@ -79,20 +74,16 @@ export default function Home() {
           <div className="">
             <Particles />
           </div>
-
         </div>
       </div>
       <div className="">
         <HeroScroll />
-
       </div>
 
       <div>
         <hr className="bg-white my-4" />
         <Footer />
-        
       </div>
-
     </div>
   );
 }

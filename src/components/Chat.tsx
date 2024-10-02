@@ -12,49 +12,48 @@ import {
 } from "@google/generative-ai";
 import { useTestCaseStore } from "@/providers/testcase-store-provider";
 
-const GEMINI_API_KEY = process.env.NEXT_GEMINI_API_KEY!;
-
 export default function Chat(topicName: string) {
-  const { testCases } = useTestCaseStore((state) => state);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: "Let's learn shall we, get to the coding straight away or ask a question...",
-      sender: "bot",
-    },
-  ]);
-  const [inputValue, setInputValue] = useState("");
-  const [chat, setChat] = useState<ChatSession>();
-  const history = useMemo(() => new Array<Content>(), []);
+  // const GEMINI_API_KEY = process.env.gemini;
+  // const { testCases } = useTestCaseStore((state) => state);
+  // const [messages, setMessages] = useState<Message[]>([
+  //   {
+  //     id: 1,
+  //     text: "Let's learn shall we, get to the coding straight away or ask a question...",
+  //     sender: "bot",
+  //   },
+  // ]);
+  // const [inputValue, setInputValue] = useState("");
+  // const [chat, setChat] = useState<ChatSession>();
+  // const history = useMemo(() => new Array<Content>(), []);
 
-  useEffect(() => {
-    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+  // useEffect(() => {
+  //   const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
-      generationConfig: {
-        maxOutputTokens: 200,
-        temperature: 0.1,
-      },
-      systemInstruction:
-        "You are a teaching assistant and your job is to teach a student using Socratic teaching method. The socratic method is a form of argumentative dialog, based on asking probing questions that leads student to the answer instead of revealing the answer. For example, if the test case times out you shouldn't just say: 'It timed out because it was a large input size' but instead you should ask the student: 'What can you say about the difference between this test-case and the other test-cases that passed?'.Then, depending on what answer the student gives, ask the next relevant question.",
-    });
-    setChat(() => model.startChat({ history: history }));
-    // if (testCases[0].status) {
-    //   testCases.forEach(async (testCase) => {
-    //     // get response on testcases from AI if it exists.
-    //     const helpInCase = await sendMessage({
-    //       id: messages.length + 1,
-    //       text: `The student is learning the topic ${topicName} and ran the code on this test case: ${testCase.nums} and got this response ${testCase.status}. Help the student in debugging by socratic method.`,
-    //       sender: "user",
-    //     });
-    //     history.push({
-    //       role: "model",
-    //       parts: [{ text: helpInCase as string }],
-    //     });
-    //   });
-    // }
-  }, [history, messages, testCases]);
+  //   const model = genAI.getGenerativeModel({
+  //     model: "gemini-1.5-flash",
+  //     generationConfig: {
+  //       maxOutputTokens: 200,
+  //       temperature: 0.1,
+  //     },
+  //     systemInstruction:
+  //       "You are a teaching assistant and your job is to teach a student using Socratic teaching method. The socratic method is a form of argumentative dialog, based on asking probing questions that leads student to the answer instead of revealing the answer. For example, if the test case times out you shouldn't just say: 'It timed out because it was a large input size' but instead you should ask the student: 'What can you say about the difference between this test-case and the other test-cases that passed?'.Then, depending on what answer the student gives, ask the next relevant question.",
+  //   });
+  //   setChat(() => model.startChat({ history: history }));
+  //   // if (testCases[0].status) {
+  //   //   testCases.forEach(async (testCase) => {
+  //   //     // get response on testcases from AI if it exists.
+  //   //     const helpInCase = await sendMessage({
+  //   //       id: messages.length + 1,
+  //   //       text: `The student is learning the topic ${topicName} and ran the code on this test case: ${testCase.nums} and got this response ${testCase.status}. Help the student in debugging by socratic method.`,
+  //   //       sender: "user",
+  //   //     });
+  //   //     history.push({
+  //   //       role: "model",
+  //   //       parts: [{ text: helpInCase as string }],
+  //   //     });
+  //   //   });
+  //   // }
+  // }, [history, messages, testCases]);
 
   async function sendMessage(message: Message) {
     const ai_response = await chat?.sendMessage(message.text);
