@@ -28,15 +28,15 @@ export default function ProblemEditor({
   const [defaultValue, setDefaultValue] = useState<string>("");
   const [topicName, setTopicName] = useState<string>("");
 
-  const {result, setResult} = useStoreResult(); 
-  const renderStatusIcon = (status:string|null) => {
+  const { result, setResult } = useStoreResult();
+  const renderStatusIcon = (status: string | null) => {
     switch (status) {
       case "Accepted":
-        return <Check size={20}/>;
+        return <Check size={20} />;
       case "Wrong Answer":
-        return <X size={20}/>;
+        return <X size={20} />;
       case "Runtime Error (NZEC)":
-        return <Timer size={20}/>;
+        return <Timer size={20} />;
       default:
         return null;
     }
@@ -64,13 +64,6 @@ export default function ProblemEditor({
 
   function handleEditorMount(editor: editor.IStandaloneCodeEditor) {
     editorRef.current = editor;
-  }
-
-  async function handleClick() {
-    const code = editorRef.current!.getValue();
-    console.log("run clicked");
-    // const output = await runThisCode(code);
-    // console.log(output);
   }
 
   return (
@@ -108,35 +101,33 @@ export default function ProblemEditor({
                   <TabsContent value="testcase">
                     <TestCases topicName={topicName} />
                   </TabsContent>
-                  <TabsContent value="result" >
+                  <TabsContent value="result">
                     {/* <Button onClick={handleClick}>run</Button> */}
-                    {result.length == 0 && (
-                      <div>First Run the code</div>
-                    )}
+                    {result.length == 0 && <div>Run the code first!</div>}
                     <div>
-                    {
-                      result.length !=0 && (
-                       result.map((r)=>(
-                        <div key={r.id} >
-                          <div className="w-1/2 mb-4">
-                          <div 
-                             className={cn(
-                              "py-5 rounded-lg flex items-center justify-center gap-2", // Base classes
-                              r.status === "Accepted" && "border-green-300 border-2 text-green-500", 
-                              r.status === "Wrong Answer" && "border-red-300 border-2 text-red-500", 
-                              r.status === `Runtime Error (NZEC)` &&`border-yellow-300 border-2 text-yellow-400`, 
-                              !r.status && "bg-gray-300 text-black" 
-                            )}
-                          >
-                           {renderStatusIcon(r.status)}{r.status}
+                      {result.length != 0 &&
+                        result.map((r) => (
+                          <div key={r.id}>
+                            <div className="w-1/2 mb-4">
+                              <div
+                                className={cn(
+                                  "py-5 rounded-lg flex items-center justify-center gap-2", // Base classes
+                                  r.status === "Accepted" &&
+                                    "border-green-300 border-2 text-green-500",
+                                  r.status === "Wrong Answer" &&
+                                    "border-red-300 border-2 text-red-500",
+                                  r.status === `Runtime Error (NZEC)` &&
+                                    `border-yellow-300 border-2 text-yellow-400`,
+                                  !r.status && "bg-gray-300 text-black",
+                                )}
+                              >
+                                {renderStatusIcon(r.status)}
+                                {r.status}
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        </div>
-                       ))
-                      )
-                    }
+                        ))}
                     </div>
-
                   </TabsContent>
                 </Tabs>
               </div>
@@ -144,10 +135,6 @@ export default function ProblemEditor({
           </ResizablePanelGroup>
         </ResizablePanel>
       </ResizablePanelGroup>
-
-      <button className="bg-white text-black" onClick={handleClick}>
-        click me 
-      </button>
     </div>
   );
 }
