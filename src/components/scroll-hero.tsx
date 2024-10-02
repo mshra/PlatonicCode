@@ -6,6 +6,8 @@ import chat from "@/image/Screenshot 2024-10-01 182230.png";
 import { StarsBackground } from "./ui/stars-background";
 import { ShootingStars } from "./ui/shooting-stars";
 import { BackgroundGradient } from "./ui/background-gradient";
+import VideoPlayer from "./video-player";
+
 
 export function HeroScroll() {
   return (
@@ -23,14 +25,20 @@ export function HeroScroll() {
         }
       >
         <>
-        <Image
+        {/* <Image
           src={chat}
           alt="hero"
           height={720}
           width={1400}
           className="mx-auto rounded-xl object-cover h-full object-left-top"
           draggable={false}
-        />
+        /> */}
+
+    {/* <video width="100%" height="auto" controls>
+      <source src="/myvideo.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video> */}
+        <VideoPlayer/>
         </>
       </ContainerScroll>
      
