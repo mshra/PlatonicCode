@@ -6,16 +6,19 @@ import { JudgeResponse, MenuBarProps, TestCase } from "@/types/types";
 import { useTestCaseStore } from "@/providers/testcase-store-provider";
 import { runThisCode } from "@/actions/judge";
 import { parseCase } from "@/actions/handleCases";
+import useStoreResult, { ResultType } from "@/stores/result-store";
 
 export function EditorMenubar(props: MenuBarProps) {
   // @simarjeet
   const { testCases } = useTestCaseStore((state) => state);
+  const {result, setResult}= useStoreResult(); 
+
 
   async function handleClick() {
     const code = props.editorRef.current?.getValue();
     if (!code) return;
 
-    testCases.forEach(async (testCase) => {
+    testCases.forEach(async (testCase, index) => {
       const stdin = await parseCase(testCase);
       const expected_output = testCase.expectedOutput;
       const output: JudgeResponse = await runThisCode(
@@ -23,7 +26,13 @@ export function EditorMenubar(props: MenuBarProps) {
         stdin,
         expected_output,
       ).then((res) => JSON.parse(res));
-      console.log(output);
+      // console.log(output);
+
+      const outputStatus:ResultType={
+        id:index, 
+        status:output.status.description, 
+      }
+      setResult(outputStatus); 
 
       if (output.stdout === testCase.expectedOutput) {
         testCase.status = "Accepted";
@@ -31,6 +40,9 @@ export function EditorMenubar(props: MenuBarProps) {
         testCase.expectedOutput = output.status.description;
       }
     });
+
+
+    console.log(result); 
   }
 
   return (
