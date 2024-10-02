@@ -8,7 +8,6 @@ import { runThisCode } from "@/actions/judge";
 import { parseCase } from "@/actions/handleCases";
 
 export function EditorMenubar(props: MenuBarProps) {
-  // @simarjeet
   const { testCases } = useTestCaseStore((state) => state);
 
   async function handleClick() {
@@ -23,7 +22,6 @@ export function EditorMenubar(props: MenuBarProps) {
         stdin,
         expected_output,
       ).then((res) => JSON.parse(res));
-      console.log(output);
 
       if (output.stdout === testCase.expectedOutput) {
         testCase.status = "Accepted";
