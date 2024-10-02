@@ -9,7 +9,6 @@ import { parseCase } from "@/actions/handleCases";
 import useStoreResult, { ResultType } from "@/stores/result-store";
 
 export function EditorMenubar(props: MenuBarProps) {
-  // @simarjeet
   const { testCases } = useTestCaseStore((state) => state);
   const {result, setResult}= useStoreResult(); 
 
@@ -26,8 +25,6 @@ export function EditorMenubar(props: MenuBarProps) {
         stdin,
         expected_output,
       ).then((res) => JSON.parse(res));
-      // console.log(output);
-
       const outputStatus:ResultType={
         id:index, 
         status:output.status.description, 
