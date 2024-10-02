@@ -1,24 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Providers from "@/providers";
-import { Cardo, Bellefair } from "next/font/google";
-import Navbar from "@/components/Navbar/Navbar";
-
-const cardo = Cardo({
-  subsets: ["latin"],
-  weight: "700",
-  style: "normal",
-  variable: "--font-cardo",
-  preload: true,
-});
-
-const bellefair = Bellefair({
-  subsets: ["latin"],
-  weight: "400",
-  style: "normal",
-  variable: "--font-bellefair",
-  preload: true,
-});
+import Providers from "@/providers/session-provider";
+import { TestCaseStoreProvider } from "@/providers/testcase-store-provider";
 
 export const metadata: Metadata = {
   title: "PlatonicCode",
@@ -32,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="overflow-x-hidden">
-        <Providers>{children}</Providers>
+        <Providers>
+          <TestCaseStoreProvider>{children}</TestCaseStoreProvider>
+        </Providers>
       </body>
     </html>
   );
