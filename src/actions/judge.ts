@@ -18,7 +18,7 @@ async function createSubmission(code: string): Promise<string> {
       body: JSON.stringify({
         language_id: Language.Python,
         source_code: code,
-        stdin: `2\n20 13`,
+        
       }),
     });
     const data: { token: string } = await response.json();
@@ -51,7 +51,7 @@ export async function runThisCode(code: string) {
   const intervalId = setInterval(async () => {
     response = await getSubmission(token);
     if (response.status.description === "Accepted") {
-      console.table(response);
+      console.log(response);
       clearInterval(intervalId);
       return JSON.stringify(response);
     }

@@ -3,6 +3,8 @@ import "./globals.css";
 import Providers from "@/providers";
 import { Cardo, Bellefair } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
+import icon from "@/app/favicon.ico"
+
 
 const cardo = Cardo({
   subsets: ["latin"],
@@ -22,6 +24,7 @@ const bellefair = Bellefair({
 
 export const metadata: Metadata = {
   title: "PlatonicCode",
+  description:"Socratic AI",
 };
 
 export default function RootLayout({
