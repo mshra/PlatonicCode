@@ -1,3 +1,7 @@
+import { editor } from "monaco-editor";
+import { JWT } from "next-auth/jwt";
+import { MutableRefObject } from "react";
+
 export enum Language {
   Python = 71,
 }
@@ -16,6 +20,8 @@ export declare type JudgeResponse = {
 export declare type TestCase = {
   nums: number[];
   target: number;
+  expectedOutput: string;
+  status: "Accepted" | "Wrong Answer" | "Time Limit Exceeded";
 };
 
 export declare type Topic = {
@@ -31,5 +37,25 @@ export declare type Message = {
   text: string;
   sender: "user" | "bot";
 };
+
+export declare interface MenuBarProps {
+  editorRef: MutableRefObject<editor.IStandaloneCodeEditor | null>;
+  testCases?: TestCase[];
+}
+
+export declare interface Token extends JWT {
+  accessToken?: string;
+  refreshToken?: string;
+  accessTokenExpires?: number;
+  error?: string;
+}
+
+export declare interface Session extends Record<string, unknown> {
+  user: {
+    accessToken?: string;
+    refreshToken?: string;
+    accessTokenExpires?: number;
+  };
+}
 
 export {};

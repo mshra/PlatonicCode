@@ -2,8 +2,37 @@
 import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import { Play, Settings } from "lucide-react";
 import Link from "next/link";
+import { JudgeResponse, MenuBarProps, TestCase } from "@/types/types";
+import { useTestCaseStore } from "@/providers/testcase-store-provider";
+import { runThisCode } from "@/actions/judge";
+import { parseCase } from "@/actions/handleCases";
 
-export function EditorMenubar() {
+export function EditorMenubar(props: MenuBarProps) {
+  // @simarjeet
+  const { testCases } = useTestCaseStore((state) => state);
+
+  async function handleClick() {
+    const code = props.editorRef.current?.getValue();
+    if (!code) return;
+
+    testCases.forEach(async (testCase) => {
+      const stdin = await parseCase(testCase);
+      const expected_output = testCase.expectedOutput;
+      const output: JudgeResponse = await runThisCode(
+        code,
+        stdin,
+        expected_output,
+      ).then((res) => JSON.parse(res));
+      console.log(output);
+
+      if (output.stdout === testCase.expectedOutput) {
+        testCase.status = "success";
+      } else {
+        testCase.expectedOutput = "fail";
+      }
+    });
+  }
+
   return (
     <>
       <Menubar className="flex justify-around m-2">
@@ -15,7 +44,7 @@ export function EditorMenubar() {
         <MenubarMenu>
           <MenubarTrigger
             className="cursor-pointer hover:bg-gray-700"
-            onClick={() => console.log("run triggered")}
+            onClick={handleClick}
           >
             <Play className="text-[#28c244]" />
             Run
