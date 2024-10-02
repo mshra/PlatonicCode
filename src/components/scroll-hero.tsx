@@ -2,7 +2,7 @@
 import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
-import chat from "@/image/Screenshot 2024-10-01 182230.png";
+import chat from "@/app/AppImage.png";
 import { StarsBackground } from "./ui/stars-background";
 import { ShootingStars } from "./ui/shooting-stars";
 import { BackgroundGradient } from "./ui/background-gradient";

@@ -16,7 +16,7 @@ import TypingAnimation from "@/components/ui/typing-animation";
 import { cn } from "@/lib/utils";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { ChevronRight } from "lucide-react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import SignIn from "./(route)/(auth)/signin/page";
 
@@ -47,7 +47,10 @@ export default function Home() {
             </BlurFade>
             <BlurFade>
               <div className="flex justify-center items-center">
-                <ShimmerButton className="mt-4 flex justify-center items-center">
+                <ShimmerButton
+                  className="mt-4 flex justify-center items-center"
+                  onClick={() => signIn("google")}
+                >
                   <span className="flex gap-1 justify-center items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                     Get Started <ChevronRight size={20} />
                   </span>

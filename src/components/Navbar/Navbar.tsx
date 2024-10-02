@@ -13,6 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import logo from "@/app/logo.png";
+import Image from "next/image";
 
 const Profile = () => {
   const { data: session } = useSession();
@@ -58,7 +60,10 @@ export default function Navbar() {
           href="/"
           className="font-cardo text-2xl hover:scale-110  transition-all ease-out"
         >
-          PlatonicCode
+          <div className="flex gap-1 items-center">
+            <Image src={logo} height={50} width={50} alt={"logo"} />
+            PlatonicCode
+          </div>
         </Link>
 
         <div className="hover:scale-105 transition-all ease-out">

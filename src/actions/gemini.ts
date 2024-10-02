@@ -21,11 +21,7 @@ const chat = model.startChat({
   history: history,
 });
 
-export async function sendMessage(
-  message: Message,
-  topic: string,
-): Promise<string> {
-  topic = topic;
+export async function sendMessage(message: Message): Promise<string> {
   const result = await chat.sendMessage(message.text);
   const response = result.response.text();
 
