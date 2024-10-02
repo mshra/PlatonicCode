@@ -14,23 +14,23 @@ import { Editor } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
 import { useEffect, useRef, useState } from "react";
 
-function toTitleCase(str: string) {
-  return str.replace(
-    /\w\S*/g,
-    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase(),
-  );
-}
-
 export default function ProblemEditor({
   params,
 }: {
   params: { title: string };
 }) {
   // get the topic name as url search params and do some string transformations.
-  const topicName = toTitleCase(params.title.replace("-", " "));
-
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
   const [defaultValue, setDefaultValue] = useState<string>("");
+  const [topicName, setTopicName] = useState<string>("");
+
+  useEffect(() => {
+    setTopicName(
+      params.title
+        .replace("-", " ")
+        .replace(/\b\w/g, (char) => char.toUpperCase()),
+    );
+  }, [params.title]);
 
   useEffect(() => {
     async function getDefaultValue() {
