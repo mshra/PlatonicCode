@@ -28,7 +28,7 @@ export default function Chat() {
 
       const botResponse: Message = {
         id: messages.length + 2,
-        text: await sendMessage(newMessage),
+        text: await sendMessage(newMessage, "Binary Search"), // TODO: figure out passing topic name as parameter.
         sender: "bot",
       };
       setMessages((prevMessages) => [...prevMessages, botResponse]);

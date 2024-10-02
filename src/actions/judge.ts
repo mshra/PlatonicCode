@@ -16,7 +16,7 @@ async function createSubmission(code: string): Promise<string> {
         Authorization: `Bearer ${JUDGE_API_KEY}`,
       },
       body: JSON.stringify({
-        language_id: Language.Cpp,
+        language_id: Language.Python,
         source_code: code,
         stdin: `2\n20 13`,
       }),
