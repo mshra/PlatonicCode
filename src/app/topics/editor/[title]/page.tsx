@@ -98,6 +98,10 @@ export default function ProblemEditor({
           </ResizablePanelGroup>
         </ResizablePanel>
       </ResizablePanelGroup>
+
+      <button className="bg-white text-black" onClick={handleClick}>
+        click me 
+      </button>
     </div>
   );
 }

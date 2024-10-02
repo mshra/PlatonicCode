@@ -3,10 +3,13 @@ import React from "react";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Image from "next/image";
 import chat from "@/image/Screenshot 2024-10-01 182230.png"; 
+import { StarsBackground } from "./ui/stars-background";
+import { ShootingStars } from "./ui/shooting-stars";
+import { BackgroundGradient } from "./ui/background-gradient";
 
 export function HeroScroll() {
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div className="">
       <ContainerScroll
         titleComponent={
           <>
@@ -19,6 +22,7 @@ export function HeroScroll() {
           </>
         }
       >
+        <>
         <Image
           src={chat}
           alt="hero"
@@ -27,7 +31,10 @@ export function HeroScroll() {
           className="mx-auto rounded-xl object-cover h-full object-left-top"
           draggable={false}
         />
+        </>
       </ContainerScroll>
+     
+      
     </div>
   );
 }

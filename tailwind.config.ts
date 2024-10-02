@@ -69,7 +69,8 @@ const config: Config = {
   		animation: {
   			'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
   			'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear',
-  			rainbow: 'rainbow var(--speed, 2s) infinite linear'
+  			rainbow: 'rainbow var(--speed, 2s) infinite linear',
+			  spotlight: "spotlight 2s ease .75s 1 forwards",
   		},
   		keyframes: {
   			'shimmer-slide': {
@@ -77,6 +78,16 @@ const config: Config = {
   					transform: 'translate(calc(100cqw - 100%), 0)'
   				}
   			},
+			  spotlight: {
+				"0%": {
+				  opacity: 0,
+				  transform: "translate(-72%, -62%) scale(0.5)",
+				},
+				"100%": {
+				  opacity: 1,
+				  transform: "translate(-50%,-40%) scale(1)",
+				},
+			  },
   			'spin-around': {
   				'0%': {
   					transform: 'translateZ(0) rotate(0)'
