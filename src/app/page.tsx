@@ -22,7 +22,9 @@ import { redirect } from "next/navigation";
 
 export default function Home() {
   const { data: session } = useSession();
- 
+  if (session) {
+    redirect("/topics");
+  }
 
   return (
     <div className="h-screen">
