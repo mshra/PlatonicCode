@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className="h-screen">
       <Navbar />
-      <StarsBackground/>
+      
 
       <div className="flex justify-center items-center h-screen border-none ">
 
