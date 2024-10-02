@@ -26,9 +26,9 @@ export function EditorMenubar(props: MenuBarProps) {
       console.log(output);
 
       if (output.stdout === testCase.expectedOutput) {
-        testCase.status = "success";
+        testCase.status = "Accepted";
       } else {
-        testCase.expectedOutput = "fail";
+        testCase.expectedOutput = output.status.description;
       }
     });
   }

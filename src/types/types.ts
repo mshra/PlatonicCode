@@ -21,7 +21,7 @@ export declare type TestCase = {
   nums: number[];
   target: number;
   expectedOutput: string;
-  status: "Accepted" | "Wrong Answer" | "Time Limit Exceeded";
+  status: string;
 };
 
 export declare type Topic = {
