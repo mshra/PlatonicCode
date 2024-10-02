@@ -10,7 +10,7 @@ export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Ask me about binary search.",
+      text: "Let's learn shall we, get to the coding straight away or ask a question...",
       sender: "bot",
     },
   ]);

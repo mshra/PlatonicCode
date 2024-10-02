@@ -2,23 +2,46 @@
 import { runThisCode } from "@/actions/judge";
 import Chat from "@/components/Chat";
 import { EditorMenubar } from "@/components/EditorMenubar";
-import TestCase from "@/components/TestCase";
+import TestCases from "@/components/TestCase";
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getTopic } from "@/db/queries/select";
 import { Editor } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+function toTitleCase(str: string) {
+  return str.replace(
+    /\w\S*/g,
+    (text) => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase(),
+  );
+}
 
 export default function ProblemEditor({
   params,
 }: {
   params: { title: string };
 }) {
+  // get the topic name as url search params and do some string transformations.
+  const topicName = toTitleCase(params.title.replace("-", " "));
+
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
+  const [defaultValue, setDefaultValue] = useState<string>("");
+
+  useEffect(() => {
+    async function getDefaultValue() {
+      const topic = await getTopic(topicName);
+      if (!topic) {
+        return;
+      }
+      setDefaultValue(topic.defaultValue);
+    }
+    getDefaultValue();
+  }, [topicName]);
 
   function handleEditorMount(editor: editor.IStandaloneCodeEditor) {
     editorRef.current = editor;
@@ -44,12 +67,14 @@ export default function ProblemEditor({
           <ResizablePanelGroup direction="vertical">
             <ResizablePanel defaultSize={60}>
               <div className="flex h-full items-center justify-center p-2">
-                <Editor
-                  theme="vs-dark"
-                  defaultLanguage="python"
-                  defaultValue="print('hello, world')"
-                  onMount={handleEditorMount}
-                />
+                {defaultValue && (
+                  <Editor
+                    theme="vs-dark"
+                    defaultLanguage="python"
+                    defaultValue={defaultValue}
+                    onMount={handleEditorMount}
+                  />
+                )}
               </div>
             </ResizablePanel>
             <ResizableHandle />
@@ -61,7 +86,7 @@ export default function ProblemEditor({
                     <TabsTrigger value="result">Result</TabsTrigger>
                   </TabsList>
                   <TabsContent value="testcase">
-                    <TestCase />
+                    <TestCases topicName={topicName} />
                   </TabsContent>
                   <TabsContent value="result">
                     Run the code first you fucking idiot.

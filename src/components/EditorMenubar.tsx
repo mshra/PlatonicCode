@@ -13,7 +13,10 @@ export function EditorMenubar() {
           </MenubarTrigger>
         </MenubarMenu>
         <MenubarMenu>
-          <MenubarTrigger className="cursor-pointer hover:bg-gray-700">
+          <MenubarTrigger
+            className="cursor-pointer hover:bg-gray-700"
+            onClick={() => console.log("run triggered")}
+          >
             <Play className="text-[#28c244]" />
             Run
           </MenubarTrigger>
