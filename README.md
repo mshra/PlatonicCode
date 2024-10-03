@@ -1,5 +1,5 @@
 # PlatonicCode
 
 <div align="center">
-![logo](public/logo.png)
+  <img src="public/logo.png" />
 </div>
