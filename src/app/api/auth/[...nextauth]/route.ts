@@ -21,9 +21,10 @@ const handler = NextAuth({
               name: profile?.name as string,
               email: profile?.email as string,
             });
+            return true;
           }
+          return "/topics";
         }
-        return "/topics";
       } catch (error) {
         console.error("Error creating user:", error);
         return false;
