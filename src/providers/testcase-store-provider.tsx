@@ -9,7 +9,7 @@ import {
   initTestCaseStore,
 } from "@/stores/testcase-store";
 
-export type TestCaseStoreAPI = ReturnType<typeof testCaseStore>;
+export type TestCaseStoreAPI = ReturnType<typeof createTestCaseStore>;
 
 export const TestCaseStoreContext = createContext<TestCaseStoreAPI | undefined>(
   undefined,
