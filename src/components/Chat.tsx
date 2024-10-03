@@ -6,7 +6,7 @@ import { Send } from "lucide-react";
 import { Message } from "@/types/types";
 import { sendMessage } from "@/actions/gemini";
 
-export default function Chat(topicName: string) {
+export default function Chat() {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     {
