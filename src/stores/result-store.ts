@@ -1,8 +1,8 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 export interface ResultType {
   id: number;
-  status: "Accepted" | "Wrong Answer" | `Runtime Error (NZEC)` | null;
+  status: string;
 }
 
 type Store = {
@@ -12,7 +12,8 @@ type Store = {
 
 const useStoreResult = create<Store>((set) => ({
   result: [],
-  setResult: (newResult) => set((state) => ({ result: [...state.result, newResult] })),
+  setResult: (newResult) =>
+    set((state) => ({ result: [...state.result, newResult] })),
 }));
 
 export default useStoreResult;

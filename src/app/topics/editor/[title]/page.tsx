@@ -2,9 +2,6 @@
 import Chat from "@/components/Chat";
 import { EditorMenubar } from "@/components/EditorMenubar";
 import TestCases from "@/components/TestCase";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader } from "@/components/ui/card";
-
 import {
   ResizableHandle,
   ResizablePanel,
@@ -28,7 +25,7 @@ export default function ProblemEditor({
   const [defaultValue, setDefaultValue] = useState<string>("");
   const [topicName, setTopicName] = useState<string>("");
 
-  const { result, setResult } = useStoreResult();
+  const { result } = useStoreResult();
   const renderStatusIcon = (status: string | null) => {
     switch (status) {
       case "Accepted":
