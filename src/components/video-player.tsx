@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function VideoPlayer() {
   const [isMounted, setIsMounted] = useState(false);
-
 
   useEffect(() => {
     setIsMounted(true);
@@ -13,14 +12,16 @@ export default function VideoPlayer() {
   }
 
   return (
-    <video width="100%" height="auto"
+    <video
+      width="100%"
+      height="auto"
       autoPlay
       loop
       muted
       playsInline
       controls={false}
     >
-      <source src="/myvideo.mp4" type="video/mp4" />
+      <source src="/demo.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   );
