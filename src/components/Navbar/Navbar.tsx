@@ -29,8 +29,8 @@ const Profile = () => {
         <DropdownMenuContent>
           <DropdownMenuLabel>{session.user?.name}</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Link href={"/user/username"}>Profile</Link>
+          <DropdownMenuItem className="cursor-not-allowed">
+            Profile
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => signOut()}>
             <LogOut className="mr-2 h-4 w-4" />
