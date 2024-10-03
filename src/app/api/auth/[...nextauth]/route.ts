@@ -21,14 +21,17 @@ const handler = NextAuth({
               name: profile?.name as string,
               email: profile?.email as string,
             });
-            return true;
           }
-          return "/topics";
+          return true;
         }
       } catch (error) {
         console.error("Error creating user:", error);
         return false;
       }
+      return false;
+    },
+    async redirect({ baseUrl }) {
+      return `${baseUrl}/topics`;
     },
   },
   session: {
