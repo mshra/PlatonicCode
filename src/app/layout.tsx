@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import icon from "@/app/favicon.ico";
 import Providers from "@/providers/session-provider";
 import { TestCaseStoreProvider } from "@/providers/testcase-store-provider";
 
