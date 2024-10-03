@@ -15,12 +15,17 @@ import { Editor } from "@monaco-editor/react";
 import { Check, Timer, X } from "lucide-react";
 import { editor } from "monaco-editor";
 import { useEffect, useRef, useState } from "react";
+import { redirect } from "next/navigation";
 
 export default function ProblemEditor({
   params,
 }: {
   params: { title: string };
 }) {
+  if (params.title !== "binary-search") {
+    redirect("/under-construction");
+  }
+
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
   const [defaultValue, setDefaultValue] = useState<string>("");
   const [topicName, setTopicName] = useState<string>("");
