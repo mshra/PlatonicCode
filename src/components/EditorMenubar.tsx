@@ -56,7 +56,7 @@ export function EditorMenubar(props: MenuBarProps) {
           </MenubarTrigger>
         </MenubarMenu>
         <MenubarMenu>
-          <MenubarTrigger>
+          <MenubarTrigger className="cursor-not-allowed">
             <Settings />
             Settings
           </MenubarTrigger>
