@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import "./globals.css";
 import Providers from "@/providers/session-provider";
 import { TestCaseStoreProvider } from "@/providers/testcase-store-provider";
+import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "PlatonicCode",

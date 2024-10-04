@@ -3,25 +3,19 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/Navbar/Navbar";
 import { HeroScroll } from "@/components/scroll-hero";
-
 import Particles from "@/components/three3d-model";
-import GridPattern from "@/components/ui/animated-grid-pattern";
 import BlurFade from "@/components/ui/blur-fade";
 import ShimmerButton from "@/components/ui/shimmer-button";
 import { ShootingStars } from "@/components/ui/shooting-stars";
-import { Spotlight } from "@/components/ui/spotlight";
 import { StarsBackground } from "@/components/ui/stars-background";
-
 import TypingAnimation from "@/components/ui/typing-animation";
-import { cn } from "@/lib/utils";
-import { Separator } from "@radix-ui/react-dropdown-menu";
 import { ChevronRight } from "lucide-react";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
-import SignIn from "./(route)/(auth)/signin/page";
 
 export default function Home() {
   const { data: session } = useSession();
+
   if (session) {
     redirect("/topics");
   }
@@ -47,10 +41,7 @@ export default function Home() {
             </BlurFade>
             <BlurFade>
               <div className="flex justify-center items-center">
-                <ShimmerButton
-                  className="mt-4 flex justify-center items-center"
-                  onClick={() => signIn("google")}
-                >
+                <ShimmerButton className="mt-4 flex justify-center items-center bg-white">
                   <span className="flex gap-1 justify-center items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                     Get Started <ChevronRight size={20} />
                   </span>
@@ -61,17 +52,6 @@ export default function Home() {
             <ShootingStars />
             <StarsBackground />
           </div>
-
-          {/* <GridPattern
-          numSquares={30}
-          maxOpacity={0.1}
-          duration={3}
-          repeatDelay={1}
-          className={cn(
-            "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12",
-          )}
-        /> */}
         </div>
         <div>
           <div className="">
@@ -79,9 +59,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="">
-        <HeroScroll />
-      </div>
+      <HeroScroll />
 
       <div>
         <hr className="bg-white my-4" />

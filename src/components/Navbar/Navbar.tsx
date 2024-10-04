@@ -1,9 +1,5 @@
 "use client";
-import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
-import Login from "./login-button";
-import { LogOut } from "lucide-react";
-import { motion } from "framer-motion";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,8 +8,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { motion } from "framer-motion";
+import { LogOut } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
+import Login from "./login-button";
 
 const Profile = () => {
   const { data: session } = useSession();

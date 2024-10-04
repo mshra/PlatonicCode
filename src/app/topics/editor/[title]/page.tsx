@@ -14,14 +14,15 @@ import useStoreResult from "@/stores/result-store";
 import { Editor } from "@monaco-editor/react";
 import { Check, Timer, X } from "lucide-react";
 import { editor } from "monaco-editor";
-import { useEffect, useRef, useState } from "react";
 import { redirect } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export default function ProblemEditor({
   params,
 }: {
   params: { title: string };
 }) {
+  // only binary search implemented
   if (params.title !== "binary-search") {
     redirect("/under-construction");
   }
