@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "@/components/footer";
+import GetStarted from "@/components/get-started";
 import Navbar from "@/components/Navbar/Navbar";
 import { HeroScroll } from "@/components/scroll-hero";
 import Particles from "@/components/three3d-model";
@@ -39,18 +40,14 @@ export default function Home() {
                 className="text-3xl bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 mt-2"
               />
             </BlurFade>
+            
+
+          
             <BlurFade>
               <div className="flex justify-center items-center">
-                <ShimmerButton className="mt-4 flex justify-center items-center bg-white">
-                  <span className="flex gap-1 justify-center items-center whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-                    Get Started <ChevronRight size={20} />
-                  </span>
-                </ShimmerButton>
+                <GetStarted/>
               </div>
             </BlurFade>
-
-            <ShootingStars />
-            <StarsBackground />
           </div>
         </div>
         <div>
@@ -59,6 +56,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <ShootingStars />
+      <StarsBackground />
       <HeroScroll />
 
       <div>
