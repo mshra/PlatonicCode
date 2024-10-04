@@ -86,6 +86,5 @@ export async function runThisCode(
     WAIT_TIME_SO_FAR += CURRENT_WAIT_TIME_MS;
     iteration += 1;
   }
-  console.table(response);
   return JSON.stringify(response);
 }

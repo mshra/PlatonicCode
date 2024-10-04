@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 export default function Topics() {
-  const { data: session } = useSession({
+  useSession({
     required: true,
     onUnauthenticated() {
       redirect("/");
