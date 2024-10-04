@@ -42,8 +42,7 @@ export default function Home() {
             </BlurFade>
             
 
-            <ShootingStars />
-            <StarsBackground />
+          
             <BlurFade>
               <div className="flex justify-center items-center">
                 <GetStarted/>
@@ -57,6 +56,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <ShootingStars />
+      <StarsBackground />
       <HeroScroll />
 
       <div>
