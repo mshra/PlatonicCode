@@ -14,6 +14,7 @@ import { FcGoogle } from "react-icons/fc";
 
 export default function Login() {
   return (
+    <div>
     <AlertDialog>
       <AlertDialogTrigger className="bg-white rounded-md text-black py-1 px-2 flex justify-center items-center">
         <LogIn className="mr-2 h-4 w-4" />
@@ -38,5 +39,6 @@ export default function Login() {
         </AlertDialogCancel>
       </AlertDialogContent>
     </AlertDialog>
+    </div>
   );
 }

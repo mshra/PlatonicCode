@@ -23,10 +23,13 @@ export default function Home() {
 
   return (
     <div className="h-screen">
+      <div className="relative z-10">
       <Navbar />
+      </div>
+      
 
       <div className="flex justify-center items-center h-screen border-none ">
-        <div className="relative z-10 flex h-screen w-full items-center justify-center overflow-hidden rounded-lg  bg-background p-20 md:shadow-xl">
+        <div className="relative z-10 flex h-screen w-full items-center justify-center overflow-hidden rounded-lg  bg-background p-20 ">
           <div className="flex flex-col">
             <BlurFade duration={0.5}>
               <p className="z-10 whitespace-pre-wrap text-center text-5xl font-semibold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500 mb-2">
